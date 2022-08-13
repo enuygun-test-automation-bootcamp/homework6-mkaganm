@@ -1,19 +1,20 @@
 package MKaganM;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
+
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
+
 
 public class DriverChrome extends Drivers {
 
+    // ! dont forget adding try catch
     // * default constructor for driver
     public DriverChrome() {
         setupDriver();
         this.driver = new ChromeDriver();
     }
 
+    // ! dont forget adding try catch
     // * constructor with options
     public DriverChrome(String[] args){
         setupDriver();
