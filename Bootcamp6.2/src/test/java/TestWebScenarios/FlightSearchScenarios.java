@@ -2,8 +2,8 @@ package TestWebScenarios;
 
 import Api.EnuygunApi;
 import EnuygunPages.HomePage;
-import MKaganM.DriverChrome;
 import com.mashape.unirest.http.exceptions.UnirestException;
+import io.qameta.allure.*;
 import model.Root;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
@@ -13,29 +13,38 @@ import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class FlightSearchScenarios {
+public class FlightSearchScenarios extends BaseTest {
 
     HomePage homePage;
-    DriverChrome driverChrome;
     String keyWord = "ada";
     Root root;
 
-    @BeforeClass
+
+    public FlightSearchScenarios(){
+        setupDriver();
+    }
+
+    @BeforeClass()
     public void setup(){
-        String[] options ={"--start-maximized"
-                ,"--disable-notifications"};
 
         homePage = new HomePage();
         root = new Root();
-        driverChrome = new DriverChrome(options);
     }
 
+
     @Test(priority = 1)
+    @Feature("open enuygun home page")
+    @Epic("open enuygun home page")
+    @Description("open enuygun home page")
+    @Link("www.enuygun.com")
     public void openEnuygun(){
         driverChrome.open(homePage.getBaseUrl());
     }
 
+
+
     @Test(priority = 2)
+    @Description("search for keyword")
     public void searchForKeyword(){
 
         driverChrome.getElement(homePage.getFlightSearch()).click();
@@ -50,7 +59,10 @@ public class FlightSearchScenarios {
 
     }
 
+
+
     @Test(priority = 3)
+    @Description("check search list and api search")
     public void checkListForSearch() throws UnirestException, IOException{
         List<String> searchFlightLists;
 
@@ -65,4 +77,5 @@ public class FlightSearchScenarios {
             Assert.assertEquals(rootsString.get(i), searchFlightLists.get(i));
         }
     }
+
 }

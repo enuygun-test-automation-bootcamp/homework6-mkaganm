@@ -19,7 +19,7 @@ public abstract class Drivers {
 
     // * this method for opening url
     // * All driver class using this method
-    // ! add try catch
+    // ! dont forget adding try catch
     public void open(String url){
         this.driver.get(url);
     }
@@ -31,11 +31,12 @@ public abstract class Drivers {
     // * It is used by overwriting inside driver classes.
     public abstract void setupDriver();
 
-    // ! add try catch
+    // ! dont forget adding try catch
     public WebElement getElement(By elementName){
         return driver.findElement(elementName);
     }
 
+    // ! dont forget adding try catch
     public List<WebElement> getElements(By elementName){
         return driver.findElements(elementName);
     }
